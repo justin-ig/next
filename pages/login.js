@@ -17,56 +17,15 @@ const ErrorMessage = styled.div`
   color: red;
 `;
 
-const Signup = () => {
-  const dispatch = useDispatch();
-  const { signUpLoading, signUpDone, signUpError, me } = useSelector((state) => state.user);
+const Login = () => {
 
+  const { me } = useSelector((state) => state.user);
   useEffect(() => {
     if (me && me.id) {
-      Router.replace('/');
+      //Router.replace('/');
     }
   }, [me && me.id]);
 
-  useEffect(() => {
-    if (signUpDone) {
-      Router.replace('/');
-    }
-  }, [signUpDone]);
-
-  useEffect(() => {
-    if (signUpError) {
-      alert(signUpError);
-    }
-  }, [signUpError]);
-
-  const [email, onChangeEmail] = useInput('');
-  const [nickname, onChangeNickname] = useInput('');
-  const [password, onChangePassword] = useInput('');
-
-  const [passwordCheck, setPasswordCheck] = useState('');
-  const [passwordError, setPasswordError] = useState(false);
-  const onChangePasswordCheck = useCallback((e) => {
-    setPasswordCheck(e.target.value);
-    setPasswordError(e.target.value !== password);
-  }, [password]);
-
-  const [term, setTerm] = useState('');
-  const [termError, setTermError] = useState(false);
-  const onChangeTerm = useCallback((e) => {
-    setTerm(e.target.checked);
-    setTermError(false);
-  }, []);
-
-  const onSubmit = useCallback(() => {
-    if (password !== passwordCheck) {
-      return setPasswordError(true);
-    }
-    if (!term) {
-      return setTermError(true);
-    }
-    console.log(email, nickname, password);
-    return dispatch(signup({ email, password, nickname }));
-  }, [email, password, passwordCheck, term]);
 
   return (
     <AppLayout>
@@ -93,4 +52,4 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
   };
 });
 
-export default Signup;
+export default Login;

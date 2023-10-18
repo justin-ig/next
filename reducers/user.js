@@ -42,7 +42,13 @@ export const initialState = {
 
 export const logIn = createAsyncThunk('user/logIn', async (data) => {
   const response = await axios.post('/user/login', data);
-  return response.data;
+  if (response.status === 200) {
+    return response.data;
+  } else {
+    alert('다시 시도해주세요.')
+    return ;
+  }
+
 });
 export const removeFollower = createAsyncThunk('user/removeFollower', async (data) => {
   const response = await axios.delete(`/user/follower/${data}`);
@@ -92,8 +98,6 @@ export const signup = createAsyncThunk('user/signup', async (data) => {
 
 export const changeNickname = createAsyncThunk('user/changeNickname', async (data) => {
   const response = await axios.patch('/user/nickname', { nickname: data });
-
-  console.log('response', response)
 
   if (response.status === 200) {
     alert('수정이 완료되었습니다.')
