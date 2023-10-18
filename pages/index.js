@@ -24,16 +24,16 @@ function Home(props) {
   const lastId = mainPosts[mainPosts.length - 1]?.id;
   useEffect(() => {
     function onScroll() {
-      if (window.pageYOffset + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
+      if (window && window.pageYOffset + document && document.documentElement.clientHeight > document && document.documentElement.scrollHeight - 300) {
         if (hasMorePosts && !loadPostsLoading) {
           dispatch(loadPosts(lastId));
         }
       }
     }
-
-    window.addEventListener('scroll', onScroll);
+    window && window.addEventListener('scroll', onScroll);
     return () => {
-      window.removeEventListener('scroll', onScroll);
+      if (window)  window.removeEventListener('scroll', onScroll);
+      else return false;
     };
   }, [hasMorePosts, loadPostsLoading, mainPosts]);
   return (
