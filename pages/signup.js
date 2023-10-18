@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import Router from 'next/router';
 import axios from 'axios';
+import dynamic from 'next/dynamic'
 
 
 const AppLayout = dynamic(() => import('../components/AppLayout'), {

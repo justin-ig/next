@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Router from 'next/router';
 import axios from 'axios';
 import useSWR from 'swr';
+import dynamic from 'next/dynamic'
 
 import { loadMyInfo } from '../reducers/user';
 import wrapper from '../store/configureStore';
