@@ -4,12 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next -p 3060",
-    "dev2": "next start -p 3060",
+    "dev": "next",
     "build": "cross-env  NODE_ENV=production next build",
-    "start": "cross-env NODE_ENV=production next start -p 3060"
+    "start": "cross-env NODE_ENV=production next start"
   },
-  "author": "ZeroCho",
+  "author": "justin",
   "license": "ISC",
   "dependencies": {
     "@ant-design/compatible": "^5.1.2",
