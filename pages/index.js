@@ -23,18 +23,18 @@ function Home(props) {
 
   const lastId = mainPosts[mainPosts.length - 1]?.id;
   useEffect(() => {
-    function onScroll() {
-      if (window && window.pageYOffset + document && document.documentElement.clientHeight > document && document.documentElement.scrollHeight - 300) {
-        if (hasMorePosts && !loadPostsLoading) {
-          dispatch(loadPosts(lastId));
-        }
-      }
-    }
-    window && window.addEventListener('scroll', onScroll);
-    return () => {
-      if (window)  window.removeEventListener('scroll', onScroll);
-      else return false;
-    };
+    // function onScroll() {
+    //   if (window && window.pageYOffset + document && document.documentElement.clientHeight > document && document.documentElement.scrollHeight - 300) {
+    //     if (hasMorePosts && !loadPostsLoading) {
+    //       dispatch(loadPosts(lastId));
+    //     }
+    //   }
+    // }
+    // window && window.addEventListener('scroll', onScroll);
+    // return () => {
+    //   if (window)  window.removeEventListener('scroll', onScroll);
+    //   else return false;
+    // };
   }, [hasMorePosts, loadPostsLoading, mainPosts]);
   return (
     <AppLayout>
