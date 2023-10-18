@@ -8,7 +8,6 @@ function getServerState() {
     : undefined;
 }
 const serverState = getServerState();
-console.log('serverState', serverState);
 const makeStore = () => configureStore({
   reducer,
   devTools: true,

@@ -1,10 +1,20 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import dynamic from 'next/dynamic'
 
-import AppLayout from '../components/AppLayout';
-import PostForm from '../components/PostForm';
-import PostCard from '../components/PostCard';
+const AppLayout = dynamic(() => import('../components/AppLayout'), {
+  ssr: false,
+})
+
+const PostForm = dynamic(() => import('../components/PostForm'), {
+  ssr: false,
+})
+
+const PostCard = dynamic(() => import('../components/PostCard'), {
+  ssr: false,
+})
+
 import { loadMyInfo } from '../reducers/user';
 import { loadPosts } from '../reducers/post';
 import wrapper from '../store/configureStore';
@@ -23,18 +33,18 @@ function Home(props) {
 
   const lastId = mainPosts[mainPosts.length - 1]?.id;
   useEffect(() => {
-    // function onScroll() {
-    //   if (window && window.pageYOffset + document && document.documentElement.clientHeight > document && document.documentElement.scrollHeight - 300) {
-    //     if (hasMorePosts && !loadPostsLoading) {
-    //       dispatch(loadPosts(lastId));
-    //     }
-    //   }
-    // }
-    // window && window.addEventListener('scroll', onScroll);
-    // return () => {
-    //   if (window)  window.removeEventListener('scroll', onScroll);
-    //   else return false;
-    // };
+    function onScroll() {
+      if (window && window.pageYOffset + document && document.documentElement.clientHeight > document && document.documentElement.scrollHeight - 300) {
+        if (hasMorePosts && !loadPostsLoading) {
+          dispatch(loadPosts(lastId));
+        }
+      }
+    }
+    window && window.addEventListener('scroll', onScroll);
+    return () => {
+      if (window)  window.removeEventListener('scroll', onScroll);
+      else return false;
+    };
   }, [hasMorePosts, loadPostsLoading, mainPosts]);
   return (
     <AppLayout>

@@ -5,12 +5,22 @@ import Router from 'next/router';
 import axios from 'axios';
 import useSWR from 'swr';
 
-import AppLayout from '../components/AppLayout';
-import NicknameEditForm from '../components/NicknameEditForm';
-import FollowList from '../components/FollowList';
 import { loadMyInfo } from '../reducers/user';
 import wrapper from '../store/configureStore';
 import { backUrl } from '../config/config';
+
+
+const AppLayout = dynamic(() => import('../components/AppLayout'), {
+  ssr: false,
+})
+
+const NicknameEditForm = dynamic(() => import('../components/NicknameEditForm'), {
+  ssr: false,
+})
+
+const FollowList = dynamic(() => import('../components/FollowList'), {
+  ssr: false,
+})
 
 const fetcher = (url) => axios.get(url).then((result) => result.data);
 

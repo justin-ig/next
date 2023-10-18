@@ -6,7 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import Router from 'next/router';
 import axios from 'axios';
 
-import AppLayout from '../components/AppLayout';
+
+const AppLayout = dynamic(() => import('../components/AppLayout'), {
+  ssr: false,
+})
+
 import useInput from '../hooks/useInput';
 import { signup, loadMyInfo } from '../reducers/user';
 import wrapper from '../store/configureStore';

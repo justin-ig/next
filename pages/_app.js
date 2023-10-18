@@ -20,8 +20,8 @@ function NodeBird({ Component, ...rest }) {
         />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <title>NodeBird</title>
-        
       </Head>
+
       <Component {...pageProps} />
     </Provider>
   );
@@ -30,9 +30,5 @@ NodeBird.propTypes = {
   Component: PropTypes.elementType.isRequired,
   pageProps: PropTypes.any.isRequired,
 };
-
-export function reportWebVitals(metric) {
-  console.log(metric);
-}
 
 export default NodeBird;
