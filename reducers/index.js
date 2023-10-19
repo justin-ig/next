@@ -7,9 +7,9 @@ import postSlice from './post';
 //axios.defaults.baseURL = 'http://localhost:8000';
 axios.defaults.baseURL = 'https://node-ingeun.koyeb.app';
 axios.defaults.withCredentials = true;
-axios.defaults.headers = {
-  'Cross-Origin-Opener-Policy' : 'unsafe-none'
-}
+// axios.defaults.headers = {
+//   'Cross-Origin-Opener-Policy' : 'unsafe-none'
+// }
 
 // (이전상태, 액션) => 다음상태
 const rootReducer = combineReducers({
