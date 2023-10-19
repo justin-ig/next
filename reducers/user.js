@@ -67,8 +67,10 @@ export const loadFollowers = createAsyncThunk('user/loadFollowers', async (data)
 
 export const loadMyInfo = createAsyncThunk('user/loadMyInfo', async () => {
   const response = await axios.get('/user');
-  console.log('=>(user.js:65) response', response.data);
-  return response.data || null;
+  if (response.status === 200) {
+    console.log('=>(user.js:65) response', response.data);
+    return response.data || null;
+  } else  return ;
 });
 
 export const loadUser = createAsyncThunk('user/loadUser', async (data) => {
